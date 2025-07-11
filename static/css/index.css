@@ -193,3 +193,17 @@ body {
     height: 335px;
     object-fit: cover;
 }
+
+
+.embrace-title .em { color: #CB4154; font-weight: bold; }     /* BrickRed */
+.embrace-title .r { color: #228B22; font-weight: bold; }      /* ForestGreen */
+.embrace-title .a { color: #4169E1; font-weight: bold; }      /* RoyalBlue */
+.embrace-title .c { color: #8051A9; font-weight: bold; }      /* RoyalPurple */
+.embrace-title .e { color: #CD661D; font-weight: bold; }      /* OrangeBrown */
+.embrace-title .k { color: #CB4154; font-weight: bold; }      /* 可选:同BrickRed */
+.embrace-title .dash { color: #000; font-weight: bold; }
+.subtitle-highlight1 { color: #CB4154; font-weight: bold; }
+.subtitle-highlight2 { color: #228B22; font-weight: bold; }
+.subtitle-highlight3 { color: #4169E1; font-weight: bold; }
+.subtitle-highlight4 { color: #8051A9; font-weight: bold; }
+.subtitle-highlight5 { color: #CD661D; font-weight: bold; }
