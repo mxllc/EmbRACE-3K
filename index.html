@@ -1,0 +1,1137 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="utf-8">
+  <meta name="description"
+    content="Learning Physics-Based Full-Body Human Reaching and Grasping from Brief Walking References">
+  <meta name="keywords"
+    content="Hand-object iteractions; Motion refinement; Inverse problems; Generative priors; Diffusion models">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta property="og:type" content="video.other" />
+  <title>Learning Physics-Based Full-Body Human Reaching and Grasping from Brief Walking References</title>
+
+  <link href="https://fonts.googleapis.com/css?family=Google+Sans|Noto+Sans|Castoro" rel="stylesheet">
+
+  <link rel="stylesheet" href="./static/css/bulma.min.css">
+  <link rel="stylesheet" href="./static/css/bulma-carousel.min.css">
+  <link rel="stylesheet" href="./static/css/bulma-slider.min.css">
+  <link rel="stylesheet" href="./static/css/fontawesome.all.min.css">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/jpswalsh/academicons@1/css/academicons.min.css">
+  <link rel="stylesheet" href="./static/css/index.css">
+  <!-- <link rel="stylesheet" href="./static/css/styles.css"> -->
+  <link rel="icon" href="./static/images/icon-2-new.png">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <script defer src="./static/js/fontawesome.all.min.js"></script>
+  <script src="./static/js/bulma-carousel.min.js"></script>
+  <script src="./static/js/bulma-slider.min.js"></script>
+  <script src="./static/js/index.js"></script>
+  <script src="assets/js/video_comparison.js"></script>
+
+  <script src="https://polyfill.io/v3/polyfill.js?features=IntersectionObserver"></script>
+  <!-- <script src="./static/js/yall.js"></script> -->
+  <script>
+    yall(
+      {
+        observeChanges: true
+      }
+    );
+  </script>
+  <!-- <script src="./static/js/scripts.js"></script> -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.5.0/js/bootstrap.bundle.min.js"></script>
+  <script src="https://uploads-ssl.webflow.com/51e0d73d83d06baa7a00000f/js/webflow.fd002feec.js"></script>
+  <script type="module" src="https://unpkg.com/@google/model-viewer@2.0.1/dist/model-viewer.min.js"></script>
+  <style>
+    .horizontal_line {
+      width: 90%;
+      height: 5px;
+      border-top: 5px dotted black;
+      line-height: 80%;
+    }
+
+    .line {
+      border-bottom: 1px solid rgb(172, 170, 170);
+      margin-top: 1px;
+      margin-left: 130px;
+      width: 80%;
+    }
+  </style>
+</head>
+
+<body>
+  <!-- <div> -->
+  <!-- <br>
+  <br>
+  <br> -->
+  <!-- </div> -->
+  <section class="hero">
+    <div class="hero-body">
+      <div class="container is-max-desktop">
+        <div class="columns is-centered">
+          <div class="column has-text-centered">
+            <h2 class="title is-2 publication-title">
+              Learning Physics-Based Full-Body Human <span style="color: #d76196"><br> Reaching and Grasping
+              </span><span style="color: rgb(210, 171, 73)"><br> from Brief Walking References
+            </h2>
+            <div class="is-size-5 publication-authors">
+              <span class="author-block">
+                <a href="https://liyitang22.github.io/">Yitang Li</a><sup>1,2,4*</sup>,</span>
+              <span class="author-block">
+                <a href="https://scholar.google.com/citations?user=smnEog0AAAAJ&hl=en&oi=ao">Mingxian Lin</a><sup>2*</sup>,</span>
+              <span class="author-block">
+                <a href="https://mykmlinzhuo.github.io./">Zhuo Lin</a><sup>1</sup>,</span>
+              <span class="author-block">
+                <a href="https://dyp159.github.io/home/">Yipeng Deng</a><sup>1,2</sup>,
+                <span class="author-block">
+                  <a href="">Yue Cao</a><sup>1,2</sup>,
+              </span>
+              <span class="author-block">
+                <a href="https://ericyi.github.io">Li Yi</a><sup>1,3,2†</sup>
+              </span>
+            </div>
+  
+            <div class="is-size-5 publication-authors">
+              <span class="author-block"><sup>1</sup>Tsinghua University,</span>
+              <span class="author-block"><sup>2</sup>Shanghai Qi Zhi Institute,</span> 
+              <span class="author-block"><sup>3</sup>Shanghai AI Laboratory,</span> 
+              <span class="author-block"><sup>4</sup>Galbot</span> 
+            </div>
+  
+            <div class="is-size-4 publication-authors">
+              <span style="font-weight:bold">CVPR 2025</span>
+            </div>
+
+            <div class="column has-text-centered">
+            <div class="publication-links">
+
+              <span class="link-block">
+                <a href="http://arxiv.org/abs/2503.07481"
+                   class="external-link button is-normal is-rounded is-dark">
+                  <span class="icon">
+                      <i class="ai ai-arxiv"></i>
+                  </span>
+                  <span>arXiv</span>
+                </a>
+              </span>
+
+<!--               <span class="link-block">
+                <a href="./static/pdfs/Parameterized_Quasi_Physical_Simulators_for_Dexterous_Manipulations_Transfer.pdf"
+                   class="external-link button is-normal is-rounded is-dark">
+                  <span class="icon">
+                      <i class="fas fa-file-pdf"></i>
+                  </span>
+                  <span>Paper</span>
+                </a>
+              </span> -->
+<!--               <span class="link-block">
+                <a href="https://huggingface.co/spaces/xymeow7/quasi-physical-sims"
+                   class="external-link button is-normal is-rounded is-dark">
+                  <!-- <span class="icon">
+                      <i class="fab fa-youtube"></i>
+                  </span> 
+                  <span>🤗 Gradio Demo </span>
+                </a>
+              </span> -->
+              
+              <span class="link-block">
+                <a href="https://github.com/liyitang22/phys-reach-grasp"
+                   class="external-link button is-normal is-rounded is-dark">
+                  <span class="icon">
+                      <i class="fab fa-github"></i>
+                  </span>
+                  <span>Code</span>
+                  </a>
+              </span>
+              <span class="link-block">
+                <a href="https://www.youtube.com/watch?v=eJ2G_tpUE8Y"
+                   class="external-link button is-normal is-rounded is-dark">
+                  <span class="icon">
+                      <i class="fab fa-youtube"></i>
+                  </span>
+                  <span>Video</span>
+                </a>
+              </span>
+              <!-- <span class="link-block">
+                <a href="./static/videos/video-7.mp4"
+                   class="external-link button is-normal is-rounded is-dark">
+                  <span class="icon">
+                      <i class="fab fa-youtube"></i>
+                  </span>
+                  <span>Video (local)</span>
+                </a>
+              </span> -->
+<!--               <span class="link-block">
+                <a href="https://docs.google.com/presentation/d/1nRCxP_5P9Pcni53zvyRZ_PEDIaQeE8FF/edit?usp=sharing&ouid=103893738370724206774&rtpof=true&sd=true"
+                   class="external-link button is-normal is-rounded is-dark">
+                  <span class="icon">
+                    <i class="fab fa-slideshare"></i>
+                  </span>
+                  <span>Slides (114MB)</span>
+                </a>
+              </span> -->
+<!--               <span class="link-block">
+                <a href="static/pdfs/Parameterized_Quasi_Physical_Simulators_for_Dexterous_Manipulations_Transfer_Supp.pdf"
+                   class="external-link button is-normal is-rounded is-dark">
+                  <span class="icon">
+                    <i class="fas fa-file-pdf"></i>
+                  </span>
+                  <span>Supp</span>
+                </a>
+              </span> -->
+            </div>
+
+          </div>
+            
+          </div>
+          
+        </div>
+        
+  </section>
+
+
+
+
+  <section class="hero teaser">
+    <div class="container is-max-desktop">
+      <div class="hero-body">
+        <video id="teaser" class="lazy" poster="static/images/teaser.png" autoplay muted loop height="50%">
+          <!-- <source data-src="static/videos-lowres/demo-video-4-compressed.mp4"
+                type="video/mp4"> -->
+        </video>
+      </div>
+    </div>
+
+    <div class="columns is-centered has-text-centered">
+      <div class="column is-four-fifths">
+        <h2 class="title is-3"><span style="color: rgb(0, 0, 0); font-weight:bold">Video</span></h2>
+        <div class="publication-video">
+          <iframe width="560" height="315" src="https://www.youtube.com/embed/eJ2G_tpUE8Y?si=Gp7NJoYmhQbc0HJ2" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+        </div>
+    </div>
+  </div>
+  </section>
+
+  <section class="hero is-light is-small">
+    <div class="hero-body">
+      <div class="container">
+        <div id="results-carousel" class="carousel results-carousel">
+          <div class="item item-fullbody">
+            <video poster="" id="fullbody" class="lazy" autoplay playsinline controls muted loop height="10%">
+              <source data-src="static/show/s1.mp4" type="video/mp4">
+            </video>
+          </div>
+
+          <div class="item item-fullbody">
+            <video poster="" id="fullbody" class="lazy" autoplay playsinline controls muted loop height="10%">
+              <source data-src="static/show/s5.mp4" type="video/mp4">
+            </video>
+          </div>
+          <div class="item item-fullbody">
+            <video poster="" id="fullbody" class="lazy" autoplay playsinline controls muted loop height="10%">
+              <source data-src="./static/feature/sta2.mp4" type="video/mp4">
+            </video>
+          </div>
+          <div class="item item-fullbody">
+            <video poster="" id="fullbody" class="lazy" autoplay playsinline controls muted loop height="10%">
+              <source data-src="static/show/s4.mp4" type="video/mp4">
+            </video>
+          </div>
+<!--           <div class="item item-fullbody">
+            <video poster="" id="fullbody" class="lazy" autoplay playsinline controls muted loop height="10%">
+              <source data-src="static/show/s7new.mp4" type="video/mp4">
+            </video>
+          </div> -->
+<!--           <div class="item item-fullbody">
+            <video poster="" id="fullbody" class="lazy" autoplay playsinline controls muted loop height="10%">
+              <source data-src="static/show/s2.mp4" type="video/mp4">
+            </video>
+          </div> -->
+
+<!-- 
+<!--           <div class="item item-fullbody">
+            <video poster="" id="fullbody" class="lazy" autoplay playsinline controls muted loop height="10%">
+              <source data-src="static/show/s6new.mp4" type="video/mp4">
+            </video>
+          </div> --> -->
+          <div class="item item-fullbody">
+            <video poster="" id="fullbody" class="lazy" autoplay playsinline controls muted loop height="10%">
+              <source data-src="./static/feature/MyVideo_2.mp4" type="video/mp4">
+            </video>
+          </div>
+<!--           <div class="item item-fullbody">
+            <video poster="" id="fullbody" class="lazy" autoplay playsinline controls muted loop height="10%">
+              <source data-src="static/show/objects_generalization/11.mp4" type="video/mp4">
+            </video>
+          </div>
+          <div class="item item-fullbody">
+            <video poster="" id="fullbody" class="lazy" autoplay playsinline controls muted loop height="10%">
+              <source data-src="static/show/objects_generalization/12.mp4" type="video/mp4">
+            </video>
+          </div> -->
+
+        </div>
+      </div>
+    </div>
+  </section>
+
+
+  <section class="section">
+    <div class="container is-max-desktop">
+      <!-- Abstract. -->
+      <div class="columns is-centered has-text-centered">
+        <div class="column is-four-fifths">
+          <h2 class="title is-3"><span style="color: rgb(0, 0, 0); font-weight:bold">Abstract</span></h2>
+          <div class="content has-text-justified">
+            <p>
+              Existing motion generation methods based on mocap data are often limited by <span
+                style="color: #ff0000; font-weight:bold">data quality and coverage</span>. In this work, we propose a
+              framework that <span style="color: #d76196; font-weight:bold">generates diverse, physically feasible
+                full-body human reaching and grasping motions</span> using <span
+                style="color: rgb(210, 171, 73); font-weight:bold">only brief walking mocap data</span>. Base on the
+              observation that <span style="color: rgb(210, 171, 73); font-weight:bold">walking data captures valuable
+                movement patterns transferable across tasks</span> and, on the other hand, <span
+                style="color: rgb(96, 158, 240); font-weight:bold">the advanced kinematic methods can generate diverse
+                grasping poses</span>, which can then be interpolated into motions to <span
+                style="color: rgb(96, 158, 240); font-weight:bold">serve as task-specific guidance</span>. Our approach
+              incorporates an <span style="color: rgb(146, 53, 238); font-weight:bold">active data generation
+                strategy</span> to maximize the utility of the generated motions, along with a <span
+                style="color: rgb(146, 53, 238); font-weight:bold">local feature alignment mechanism</span> that
+              transfers natural movement patterns from walking data to enhance both the success rate and naturalness of
+              the synthesized motions. By combining the <span
+                style="color: rgb(210, 171, 73); font-weight:bold">fidelity and stability of natural walking</span> with
+              the <span style="color: rgb(96, 158, 240); font-weight:bold">flexibility and generalizability of
+                task-specific generated data</span>, our method demonstrates <span
+                style="color: rgb(5, 160, 93); font-weight:bold">strong performance and robust adaptability in diverse
+                scenes and with unseen objects</span>.
+
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <div class="container is-full-hd is-centered">
+    <div class="line"></div>
+  </div>
+
+
+  <section class="section">
+    <div class="container is-max-desktop is-centered has-text-centered">
+      <div class="columns is-centered">
+        <div class="column is-full-width">
+          <h2 class="title is-3">Reaching and Grasping Compared to Baselines</h2>
+          <p>Grasping Object on <span style="color: orange; font-weight:bold">High</span> & <span
+              style="color: rgb(8, 173, 243); font-weight:bold">Low</span> Table.</p>
+          <br>
+          <br>
+          <div style="margin-bottom: -10px;">
+          </div>
+          <div class="columns is-centered">
+            <div class="column">
+              <div class="content">
+                <video id="grab_mouse_102_isaac_v2_humandemo" class="lazy" autoplay controls muted loop playsinline
+                  height="100%">
+                  <source data-src="./static/baselines/ours.mp4" type="video/mp4">
+                </video>
+                <p>
+                  Ours
+                </p>
+
+              </div>
+            </div>
+            <div class="column">
+              <div class="content">
+                <video id="ase" class="lazy" autoplay controls muted loop playsinline height="100%">
+                  <source data-src="./static/baselines/ppo.mp4" type="video/mp4">
+                </video>
+                <p>
+                  Fullbody PPO
+                </p>
+              </div>
+            </div>
+
+            <!-- Matting. -->
+            <div class="column">
+              <div class="columns is-centered">
+                <div class="column content">
+                  <video id="amp" class="lazy" autoplay controls muted loop playsinline height="100%">
+                    <source data-src="./static/baselines/ase.mp4" type="video/mp4">
+                  </video>
+                  <p>
+                    ASE
+                  </p>
+                </div>
+
+              </div>
+            </div>
+
+          </div>
+
+          <div class="columns is-centered">
+
+            <div class="column">
+              <div class="content">
+                <video id="taco_20231027_086_v2_bullet_humandemo" class="lazy" autoplay controls muted loop playsinline
+                  height="100%">
+                  <source data-src="./static/baselines/amp.mp4" type="video/mp4">
+                </video>
+                <p>
+                  AMP
+                </p>
+
+              </div>
+            </div>
+
+            <!-- Visual Effects. -->
+            <div class="column">
+              <div class="content">
+                <video id="taco_20231027_086_v2_bullet_baseline" class="lazy" autoplay controls muted loop playsinline
+                  height="100%">
+                  <source data-src="./static/baselines/ampstar.mp4" type="video/mp4">
+                </video>
+                <p>
+                  AMP*
+                  <br>(Adding generated data)
+              </div>
+            </div>
+
+            <!-- Matting. -->
+            <div class="column">
+              <!-- <h2 class="title is-3">Matting</h2> -->
+              <div class="columns is-centered">
+                <div class="column content">
+                  <video id="taco_20231027_086_v2_bullet_ours" class="lazy" autoplay controls muted loop playsinline
+                    height="100%">
+                    <source data-src="./static/baselines/pmp2.mp4" type="video/mp4">
+                  </video>
+                  <p>
+                    PMP(2-Part)
+                    <br> (Upper and Lower)
+                  </p>
+                </div>
+
+              </div>
+            </div>
+          </div>
+
+          <!-- <p> Functional tool-using.</p> -->
+          <div class="columns is-centered">
+
+            <div class="column">
+              <div class="content">
+                <video id="taco_20231024_044_v2_isaac_humandemo" class="lazy" autoplay controls muted loop playsinline
+                  height="100%">
+                  <source data-src="./static/baselines/pmp5.mp4" type="video/mp4">
+                </video>
+                <p>
+                  PMP(5-Part)
+                  <br> (Torso and Five Limbs)
+                </p>
+
+              </div>
+            </div>
+
+            <!-- Visual Effects. -->
+            <div class="column">
+              <div class="content">
+                <video id="taco_20231024_044_v2_isaac_baseline" class="lazy" autoplay controls muted loop playsinline
+                  height="100%">
+                  <source data-src="./static/baselines/pse2.mp4" type="video/mp4">
+                </video>
+                <p>
+                  PSE(2-Part)
+                  <br> (Upper and Lower)
+                </p>
+              </div>
+            </div>
+
+            <!-- the Matting -->
+            <!-- Matting. -->
+            <div class="column">
+              <!-- <h2 class="title is-3">Matting</h2> -->
+              <div class="columns is-centered">
+                <div class="column content">
+                  <video id="taco_20231024_044_v2_isaac_ours" class="lazy" autoplay controls muted loop playsinline
+                    height="100%">
+                    <source data-src="./static/baselines/pse5.mp4" type="video/mp4">
+                  </video>
+                  <p>
+                    PSE(5-Part)
+                    <br> (Torso and Five Limbs)
+                  </p>
+                </div>
+
+              </div>
+            </div>
+          </div>
+
+  </section>
+
+
+  <div class="container is-full-hd">
+    <!-- <hr class="solid"> -->
+    <div class="line"></div>
+  </div>
+
+  <section class="section">
+
+    <div class="container is-max-desktop is-centered has-text-centered">
+      <div class="column is-full-width">
+        <!-- <h2 class="title is-3">Could RL Benefit from the Physics Curriculum?</h2> -->
+        <h2 class="title is-3">Generalization ability</h2>
+
+        <h4 class="title is-4">Different Table <span style="color: rgb(215, 77, 30); font-weight:bold">height</span> &
+          <span style="color: rgb(54, 65, 219); font-weight:bold">width</span> & <span
+            style="color: rgb(27, 143, 81); font-weight:bold">Goal position</span>
+        </h4>
+
+        <p>We can generate <span style="color: rgb(233, 73, 196); font-weight:bold">diverse reaching and grasping
+            motions</span> conditioned on different scenes with different table height(0.0-1.6m), table width(0.6-1.2m),
+          initial positions with high success rate and natural movement. The generalization capability for different
+          scenes, particularly with respect to table heights, <span
+            style="color: rgb(234, 101, 101); font-weight:bold">largely stems from the diversity of our generated
+            data</span>. Our dataset covers almost all possible table heights, providing task-specific guidance to
+          facilitate grasping in various scenarios.
+
+        </p>
+        <br>
+        <br>
+        <p></p>
+        <div class="columns is-centered">
+          <div class="column">
+            <div class="content">
+              <video id="rlcurri_grab_mouse_102_humandemo" class="lazy" autoplay controls muted loop playsinline
+                height="50%">
+                <source data-src="./static/show/1x9.mp4" type="video/mp4">
+              </video>
+
+            </div>
+          </div>
+
+          <div class="column">
+            <div class="columns is-centered">
+              <div class="column content">
+                <video id="rlcurri_grab_mouse_102_ori_rl" class="lazy" autoplay controls muted loop playsinline
+                  height="50%">
+                  <source data-src="./static/show/9x1.mp4" type="video/mp4">
+                </video>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="columns is-centered">
+
+
+          <div class="column">
+            <div class="content">
+              <video id="rlcurri_grab_hammer_91_humandemo" class="lazy" autoplay controls muted loop playsinline
+                height="50%">
+                <source data-src="./static/show/3x3.mp4" type="video/mp4">
+              </video>
+
+            </div>
+          </div>
+
+          <div class="column">
+            <div class="columns is-centered">
+              <div class="column content">
+                <video id="rlcurri_grab_hammer_91_baseline" class="lazy" autoplay controls muted loop playsinline
+                  height="50%">
+                  <source data-src="./static/show/width12.mp4" type="video/mp4">
+                </video>
+              </div>
+            </div>
+          </div>
+
+        </div>
+
+        <h4 class="title is-4">Various <span style="color: rgb(215, 77, 30); font-weight:bold">Object Instances</span> &
+          <span style="color: rgb(54, 65, 219); font-weight:bold">Categories
+        </h4>
+
+        <p>Our policy successfully generalizes to <span style="color: rgb(233, 73, 196); font-weight:bold">various
+            objects</span>, including <span style="color: rgb(234, 101, 101); font-weight:bold">unseen
+            categories</span>, producing natural movements with a high success rate.
+
+        </p>
+        <br>
+        <br>
+        <div class="columns is-centered">
+          <div class="column">
+            <div class="content">
+              <video id="rlcurri_grab_mouse_102_humandemo" class="lazy" autoplay controls muted loop playsinline
+                height="50%">
+                <source data-src="./static/show/object91cut.mp4" type="video/mp4">
+              </video>
+
+            </div>
+          </div>
+
+          <div class="column">
+            <div class="columns is-centered">
+              <div class="column content">
+                <video id="rlcurri_grab_mouse_102_ori_rl" class="lazy" autoplay controls muted loop playsinline
+                  height="50%">
+                  <source data-src="./static/show/object92.mp4" type="video/mp4">
+                </video>
+              </div>
+            </div>
+          </div>
+
+          <div class="column">
+            <div class="columns is-centered">
+              <div class="column content">
+                <video id="rlcurri_grab_mouse_102_ori_rl" class="lazy" autoplay controls muted loop playsinline
+                  height="50%">
+                  <source data-src="./static/show/object6.mp4" type="video/mp4">
+                </video>
+              </div>
+            </div>
+          </div>
+
+
+        </div>
+        <br>
+
+      </div>
+    </div>
+
+    <div class="hero-body">
+      <div class="container">
+        <div id="results-carousel" class="carousel results-carousel">
+
+          <div class="item item-fullbody">
+            <video poster="" id="fullbody" class="lazy" autoplay playsinline controls muted loop height="5%">
+              <source data-src="static/show/objects_generalization/1.mp4" type="video/mp4">
+            </video>
+          </div>
+          <div class="item item-fullbody">
+            <video poster="" id="fullbody" class="lazy" autoplay playsinline controls muted loop height="5%">
+              <source data-src="static/show/objects_generalization/2.mp4" type="video/mp4">
+            </video>
+          </div>
+          <div class="item item-fullbody">
+            <video poster="" id="fullbody" class="lazy" autoplay playsinline controls muted loop height="5%">
+              <source data-src="static/show/objects_generalization/3.mp4" type="video/mp4">
+            </video>
+          </div>
+          <div class="item item-fullbody">
+            <video poster="" id="fullbody" class="lazy" autoplay playsinline controls muted loop height="5%">
+              <source data-src="static/show/objects_generalization/4.mp4" type="video/mp4">
+            </video>
+          </div>
+          <div class="item item-fullbody">
+            <video poster="" id="fullbody" class="lazy" autoplay playsinline controls muted loop height="5%">
+              <source data-src="static/show/objects_generalization/5.mp4" type="video/mp4">
+            </video>
+          </div>
+          <div class="item item-fullbody">
+            <video poster="" id="fullbody" class="lazy" autoplay playsinline controls muted loop height="5%">
+              <source data-src="static/show/objects_generalization/6.mp4" type="video/mp4">
+            </video>
+          </div>
+          <div class="item item-fullbody">
+            <video poster="" id="fullbody" class="lazy" autoplay playsinline controls muted loop height="5%">
+              <source data-src="static/show/objects_generalization/7.mp4" type="video/mp4">
+            </video>
+          </div>
+          <div class="item item-fullbody">
+            <video poster="" id="fullbody" class="lazy" autoplay playsinline controls muted loop height="5%">
+              <source data-src="static/show/objects_generalization/8.mp4" type="video/mp4">
+            </video>
+          </div>
+          <div class="item item-fullbody">
+            <video poster="" id="fullbody" class="lazy" autoplay playsinline controls muted loop height="5%">
+              <source data-src="static/show/objects_generalization/9.mp4" type="video/mp4">
+            </video>
+          </div>
+          <div class="item item-fullbody">
+            <video poster="" id="fullbody" class="lazy" autoplay playsinline controls muted loop height="5%">
+              <source data-src="static/show/objects_generalization/10.mp4" type="video/mp4">
+            </video>
+          </div>
+        </div>
+      </div>
+    </div>
+    </div>
+  </section>
+
+  <section class="section">
+
+    <div class="container is-max-desktop is-centered has-text-centered">
+      <div class="column is-full-width">
+
+        <h2 class="title is-3">Effects of Data Ratio</h2>
+
+        <p>At low data ratios, task completion <span style="color: rgb(156, 40, 2); font-weight:bold">improves
+            rapidly</span> as the ratio increases. However, when the ratio exceeds 100%, the character <span
+            style="color: rgb(9, 183, 0); font-weight:bold">struggles with natural turning</span>, and beyond 200%, the
+          character shifts focus to <span style="color: rgb(146, 53, 238); font-weight:bold">balancing between generated
+            demos</span>, hindering effective walking.
+
+        </p>
+        <br>
+        <br>
+        <p></p>
+        <div class="columns is-centered">
+          <div class="column">
+            <div class="content">
+              <video id="rlcurri_grab_mouse_102_humandemo" class="lazy" autoplay controls muted loop playsinline
+                height="50%">
+                <source data-src="./static/baselines/ase.mp4" type="video/mp4">
+              </video>
+              <p>
+                Data Ratio: 0%
+              </p>
+
+            </div>
+          </div>
+
+          <div class="column">
+            <div class="columns is-centered">
+              <div class="column content">
+                <video id="rlcurri_grab_mouse_102_ori_rl" class="lazy" autoplay controls muted loop playsinline
+                  height="50%">
+                  <source data-src="./static/baselines/5.mp4" type="video/mp4">
+                </video>
+                <p>
+                  Data Ratio: 5%
+                </p>
+              </div>
+            </div>
+          </div>
+
+
+          <div class="column">
+            <div class="columns is-centered">
+              <div class="column content">
+                <video id="rlcurri_grab_mouse_102_ours" class="lazy" autoplay controls muted loop playsinline
+                  height="50%">
+                  <source data-src="./static/baselines/10.mp4" type="video/mp4">
+                </video>
+                <p>
+                  Data Ratio: 10%
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+
+
+        <div class="columns is-centered">
+          <div class="column">
+            <div class="content">
+              <video id="rlcurri_grab_hammer_91_humandemo" class="lazy" autoplay controls muted loop playsinline
+                height="50%">
+                <source data-src="./static/baselines/ours.mp4" type="video/mp4">
+              </video>
+              <p>
+                Data Ratio: 20%
+              </p>
+
+            </div>
+          </div>
+
+          <div class="column">
+            <div class="columns is-centered">
+              <div class="column content">
+                <video id="rlcurri_grab_hammer_91_baseline" class="lazy" autoplay controls muted loop playsinline
+                  height="50%">
+                  <source data-src="./static/baselines/50.mp4" type="video/mp4">
+                </video>
+                <p>
+                  Data Ratio: 50%
+                </p>
+              </div>
+            </div>
+          </div>
+
+          <div class="column">
+            <div class="columns is-centered">
+              <div class="column content">
+                <video id="rlcurri_grab_hammer_91_baseline" class="lazy" autoplay controls muted loop playsinline
+                  height="50%">
+                  <source data-src="./static/baselines/100.mp4" type="video/mp4">
+                </video>
+                <p>
+                  Data Ratio: 100%
+                </p>
+              </div>
+            </div>
+          </div>
+
+
+          <div class="column">
+            <div class="columns is-centered">
+              <div class="column content">
+                <video id="rlcurri_grab_hammer_91_ours" class="lazy" autoplay controls muted loop playsinline
+                  height="50%">
+                  <source data-src="./static/baselines/200.mp4" type="video/mp4">
+                </video>
+                <p>
+                  Data Ratio: 200%
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+
+
+      </div>
+    </div>
+
+
+  </section>
+
+
+  <div class="container is-full-hd is-centered">
+    <!-- <hr class="solid; " color="blue" noshade> -->
+    <!-- <hr width="100%" size="2" color="blue" noshade> -->
+    <div class="line"></div>
+  </div>
+
+
+  <section class="section">
+
+    <div class="container is-max-desktop is-centered has-text-centered">
+      <div class="column is-full-width">
+        <h2 class="title is-3">Ablation Study on Feature Alignment</h2>
+        <p>We conduct various ablation studies to validate the effectiveness of feature alignment. The result show it
+          can improve the motion <span style="color: rgb(156, 40, 2); font-weight:bold">naturalness</span> and <span
+            style="color: rgb(40, 58, 224); font-weight:bold">stability during recovery</span>.
+        </p>
+        <br>
+        <h4 class="title is-4">Pose Refine</h4>
+
+        <p>Local feature alignment enhances the refinement of the grasping pose. For better comparison, we include a
+          pause in the video during the grasping phase. A more detailed explanation is presented in the figure below.
+        </p>
+        <br>
+        <div class="columns is-centered">
+          <div class="column">
+            <div class="content">
+              <video id="ablation_stapler_humandeom" class="lazy" autoplay controls muted loop playsinline height="50%">
+                <source data-src="./static/feature/MyVideo_1.mp4" type="video/mp4">
+              </video>
+              <p>
+                w/o features
+              </p>
+
+            </div>
+          </div>
+
+          <div class="column">
+            <div class="columns is-centered">
+              <div class="column content">
+                <video id="ablation_stapler_ours_woana" class="lazy" autoplay controls muted loop playsinline
+                  height="50%">
+                  <source data-src="./static/feature/MyVideo_2.mp4" type="video/mp4">
+                </video>
+                <p>
+                  Zero+First-layer features
+                </p>
+              </div>
+            </div>
+          </div>
+
+
+        </div>
+
+        <img src="./static/images/ablation_pos1.png" alt="Pose Refine Illustration" style="max-width:50%; height:auto;">
+        <br>
+        <p><span style="color: rgb(199, 106, 7); font-weight:bold">More detailed comparison</span></p>
+        <br>
+        <div class="columns is-centered">
+          <div class="column">
+            <div class="content">
+              <video id="ablation_stapler_humandeom" class="lazy" autoplay controls muted loop playsinline height="50%">
+                <source data-src="./static/feature/no-align.mp4" type="video/mp4">
+              </video>
+              <p>
+                w/o features
+              </p>
+
+            </div>
+          </div>
+
+          <div class="column">
+            <div class="columns is-centered">
+              <div class="column content">
+                <video id="ablation_stapler_ours_woana" class="lazy" autoplay controls muted loop playsinline
+                  height="50%">
+                  <source data-src="./static/feature/torso.mp4" type="video/mp4">
+                </video>
+                <p>
+                  Torso-feature only
+                </p>
+              </div>
+            </div>
+          </div>
+
+
+          <div class="column">
+            <div class="columns is-centered">
+              <div class="column content">
+                <video id="ablation_stapler_humandeom_wolocalforcenn" class="lazy" autoplay controls muted loop
+                  playsinline height="50%">
+                  <source data-src="./static/feature/limbs.mp4" type="video/mp4">
+                </video>
+                <p>
+                  Limb-features only
+                </p>
+              </div>
+            </div>
+          </div>
+
+
+        </div>
+
+
+        <div class="columns is-centered">
+          <div class="column">
+            <div class="columns is-centered">
+              <div class="column content">
+                <video id="ablation_stapler_ours_woana" class="lazy" autoplay controls muted loop playsinline
+                  height="50%">
+                  <source data-src="./static/feature/torsof1.mp4" type="video/mp4">
+                </video>
+                <p>
+                  Torso-feature + First-layer feature
+                </p>
+              </div>
+            </div>
+          </div>
+          <div class="column">
+            <div class="columns is-centered">
+              <div class="column content">
+                <video id="ablation_stapler_humandeom_wolocalforcenn" class="lazy" autoplay controls muted loop
+                  playsinline height="50%">
+                  <source data-src="./static/feature/f01.mp4" type="video/mp4">
+                </video>
+                <p>
+                  Zero+First-layer features
+                </p>
+              </div>
+            </div>
+          </div>
+
+          <div class="column">
+            <div class="columns is-centered">
+              <div class="column content">
+                <video id="ablation_stapler_humandeom_ours" class="lazy" autoplay controls muted loop playsinline
+                  height="50%">
+                  <source data-src="./static/feature/f012.mp4" type="video/mp4">
+                </video>
+                <p>
+                  Zero+First+Second-layer features
+                </p>
+              </div>
+            </div>
+          </div>
+
+        </div>
+        <!-- </div> -->
+        <br>
+        <h4 class="title is-4">Improve Stability<h4>
+            <br>
+            <p>Feature alignment enhances overall stability: with feature alignment, the agent have its <span
+                style="color: orange; font-weight:bold">left hand raises swiftly</span>, and <span
+                style="color: orange; font-weight:bold">left foot steps back quickly</span> to <span
+                style="color: rgb(73, 93, 207); font-weight:bold">maintain balance</span> when grasping low objects.
+              This coordinated movement is crucial for <span style="color: rgb(221, 82, 82); font-weight:bold">dynamic
+                recovery</span>.
+            </p>
+            <br>
+            <div class="columns is-centered">
+
+              <div class="column">
+                <div class="columns is-centered">
+                  <div class="column content">
+                    <video id="ablation_stapler_ours_woana" class="lazy" autoplay controls muted loop playsinline
+                      height="50%">
+                      <source data-src="./static/feature/sta1.mp4" type="video/mp4">
+                    </video>
+                    <p>
+                      w/o feature align
+                    </p>
+                  </div>
+                </div>
+              </div>
+
+
+              <div class="column">
+                <div class="columns is-centered">
+                  <div class="column content">
+                    <video id="ablation_stapler_humandeom_wolocalforcenn" class="lazy" autoplay controls muted loop
+                      playsinline height="50%">
+                      <source data-src="./static/feature/sta2.mp4" type="video/mp4">
+                    </video>
+                    <p>
+                      Adding Zero/First-Layer feature align
+                    </p>
+                  </div>
+                </div>
+              </div>
+
+
+            </div>
+  </section>
+
+
+
+  <div class="container is-full-hd is-centered">
+    <!-- <hr class="solid; " color="blue" noshade> -->
+    <!-- <hr width="100%" size="2" color="blue" noshade> -->
+    <div class="line"></div>
+  </div>
+
+
+
+  <!-- 
+<br>
+<br>
+<br> -->
+
+  <script src="https://polyfill.io/v3/polyfill.js?features=IntersectionObserver"></script>
+  <!-- <script src="/assets/js/yall.js"></script> -->
+  <script>
+    yall(
+      {
+        observeChanges: true
+      }
+    );
+  </script>
+  <!-- <script src="/assets/js/scripts.js"></script> -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.5.0/js/bootstrap.bundle.min.js"></script>
+  <script src="https://uploads-ssl.webflow.com/51e0d73d83d06baa7a00000f/js/webflow.fd002feec.js"></script>
+
+  <script>
+    document.addEventListener("DOMContentLoaded", function () {
+      var lazyVideos = [].slice.call(document.querySelectorAll("video.lazy"));
+      if ("IntersectionObserver" in window) {
+        var lazyVideoObserver = new IntersectionObserver(function (entries, observer) {
+          entries.forEach(function (video) {
+            if (video.isIntersecting) {
+              for (var source in video.target.children) {
+                var videoSource = video.target.children[source];
+                if (typeof videoSource.tagName === "string" && videoSource.tagName === "SOURCE") {
+                  videoSource.src = videoSource.dataset.src;
+                }
+              }
+              video.target.load();
+              video.target.classList.remove("lazy");
+              lazyVideoObserver.unobserve(video.target);
+            }
+          });
+        });
+        lazyVideos.forEach(function (lazyVideo) {
+          lazyVideoObserver.observe(lazyVideo);
+        });
+      }
+    });
+  </script>
+
+
+  <script>
+    function change_stochastic() {
+      console.info("hhh\n");
+      const showMoreBtn = document.getElementById('showMoreBtn_stochastic');
+      if (showMoreBtn.innerText == 'More results') {
+        showMoreBtn.innerText = 'Hide';
+      } else {
+        showMoreBtn.innerText = 'More results';
+      }
+    };
+
+    function change_arctic() {
+      console.info("hhh\n");
+      const showMoreBtn = document.getElementById('showMoreBtn_arctic');
+      if (showMoreBtn.innerText == 'More results') {
+        showMoreBtn.innerText = 'Hide';
+      } else {
+        showMoreBtn.innerText = 'More results';
+      }
+    };
+
+    function change_hoi4d() {
+      console.info("hhh\n");
+      const showMoreBtn = document.getElementById('showMoreBtn_hoi4d');
+      if (showMoreBtn.innerText == 'More results') {
+        showMoreBtn.innerText = 'Hide';
+      } else {
+        showMoreBtn.innerText = 'More results';
+      }
+    };
+
+    function change_grabbeta() {
+      console.info("hhh\n");
+      const showMoreBtn = document.getElementById('showMoreBtn_grabbeta');
+      if (showMoreBtn.innerText == 'More results') {
+        showMoreBtn.innerText = 'Hide';
+      } else {
+        showMoreBtn.innerText = 'More results';
+      }
+    };
+
+    function change_grab() {
+      console.info("hhh\n");
+      const showMoreBtn = document.getElementById('showMoreBtn_grab');
+      if (showMoreBtn.innerText == 'More results') {
+        showMoreBtn.innerText = 'Hide';
+      } else {
+        showMoreBtn.innerText = 'More results';
+      }
+    };
+
+    function change_appli() {
+      console.info("hhh\n");
+      const showMoreBtn = document.getElementById('showMoreBtn_appli');
+      if (showMoreBtn.innerText == 'More results') {
+        showMoreBtn.innerText = 'Hide';
+      } else {
+        showMoreBtn.innerText = 'More results';
+      }
+    };
+  </script>
+
+
+  <div class="container is-full-hd is-centered">
+    <!-- <hr class="solid; " color="blue" noshade> -->
+    <!-- <hr width="100%" size="2" color="blue" noshade> -->
+    <div class="line"></div>
+  </div>
+
+
+  <section class="section" id="Contact">
+    <div class="container is-max-desktop content has-text-centered">
+      <!-- <h2 class="title">Contact</h2> -->
+      <h2 class="title is-3">Contact</h2>
+        <p>
+          Please contact us at <a href=liyitang22@mails.tsinghua.edu.cn">liyitang22@mails.tsinghua.edu.cn</a> if you have any question. 
+        </p>
+    </div>
+  </section>
+  
+
+
+  <footer class="footer">
+    <div class="container">
+      <div class="columns is-centered">
+        <div class="column is-8">
+          <div class="content">
+            <p>
+              The template is adapted from <a href="https://github.com/nerfies/nerfies.github.io">Nerfies</a>. We thank
+              authors for their codebase.
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </footer>
+</body>
+
+</html>
