@@ -4,12 +4,12 @@
 <head>
   <meta charset="utf-8">
   <meta name="description"
-    content="Learning Physics-Based Full-Body Human Reaching and Grasping from Brief Walking References">
+    content="EmbRACE-3K: Embodied Reasoning and Action in Complex Environments">
   <meta name="keywords"
     content="Hand-object iteractions; Motion refinement; Inverse problems; Generative priors; Diffusion models">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta property="og:type" content="video.other" />
-  <title>Learning Physics-Based Full-Body Human Reaching and Grasping from Brief Walking References</title>
+  <title>EmbRACE-3K:Embodied Reasoning and Action in Complex Environments</title>
 
   <link href="https://fonts.googleapis.com/css?family=Google+Sans|Noto+Sans|Castoro" rel="stylesheet">
 
@@ -70,37 +70,70 @@
       <div class="container is-max-desktop">
         <div class="columns is-centered">
           <div class="column has-text-centered">
-            <h2 class="title is-2 publication-title">
-              Learning Physics-Based Full-Body Human <span style="color: #d76196"><br> Reaching and Grasping
-              </span><span style="color: rgb(210, 171, 73)"><br> from Brief Walking References
+            <style>
+            .embrace-title .em { color: #CB4154; font-weight: bold; }     /* BrickRed */
+            .embrace-title .r { color: #228B22; font-weight: bold; }      /* ForestGreen */
+            .embrace-title .a { color: #4169E1; font-weight: bold; }      /* RoyalBlue */
+            .embrace-title .c { color: #8051A9; font-weight: bold; }      /* RoyalPurple */
+            .embrace-title .e { color: #CD661D; font-weight: bold; }      /* OrangeBrown */
+            .embrace-title .k { color: #CB4154; font-weight: bold; }      /* 可选:同BrickRed */
+            .embrace-title .dash { color: #000; font-weight: bold; }
+            .subtitle-highlight1 { color: #CB4154; font-weight: bold; }
+            .subtitle-highlight2 { color: #228B22; font-weight: bold; }
+            .subtitle-highlight3 { color: #4169E1; font-weight: bold; }
+            .subtitle-highlight4 { color: #8051A9; font-weight: bold; }
+            .subtitle-highlight5 { color: #CD661D; font-weight: bold; }
+            </style>
+
+            <h2 class="title is-2 publication-title embrace-title">
+              <span class="em">Emb</span><span class="r">R</span><span class="a">A</span><span class="c">C</span><span class="e">E</span><span class="dash">-</span>3K
+              <br>
+              <span style="font-size:36px; font-weight:normal;">
+                <span class="subtitle-highlight1">Emb</span>odied
+                <span class="subtitle-highlight2">R</span>easoning and
+                <span class="subtitle-highlight3">A</span>ction in
+                <span class="subtitle-highlight4">C</span>omplex
+                <span class="subtitle-highlight5">E</span>nvironments
+              </span>
             </h2>
             <div class="is-size-5 publication-authors">
               <span class="author-block">
-                <a href="https://liyitang22.github.io/">Yitang Li</a><sup>1,2,4*</sup>,</span>
+                <a href="https://mxllc.github.io/">Mingxian Lin</a><sup>1*</sup>,</span>
               <span class="author-block">
-                <a href="https://scholar.google.com/citations?user=smnEog0AAAAJ&hl=en&oi=ao">Mingxian Lin</a><sup>2*</sup>,</span>
+                <a href="https://aaron-weihuang.com/">Wei Huang</a><sup>1*</sup>,</span>
               <span class="author-block">
-                <a href="https://mykmlinzhuo.github.io./">Zhuo Lin</a><sup>1</sup>,</span>
+                <a href="https://liyitang22.github.io/">Yitang Li</a><sup>2</sup>,</span>
               <span class="author-block">
-                <a href="https://dyp159.github.io/home/">Yipeng Deng</a><sup>1,2</sup>,
-                <span class="author-block">
-                  <a href="">Yue Cao</a><sup>1,2</sup>,
-              </span>
+                <a href="https://www.linkedin.com/in/ronniejiang">Chengjie Jiang</a><sup>3</sup>,</span>
               <span class="author-block">
-                <a href="https://ericyi.github.io">Li Yi</a><sup>1,3,2†</sup>
-              </span>
+                <a href="https://github.com/wukui-muc">Kui Wu</a><sup>4</sup>,</span><br>
+              <span class="author-block">
+                <a href="https://fangweizhong.xyz/">Fangwei Zhong</a><sup>4</sup>,</span>
+              <span class="author-block">
+                <a href="http://thesouthfrog.com/about.me/">Shengju Qian</a><sup>3</sup>,</span>
+              <span class="author-block">
+                <a href="https://scholar.google.com/citations?user=2Z1GJ50AAAAJ">Xin Wang</a><sup>3</sup>,</span>
+              <span class="author-block">
+                <a href="https://xjqi.github.io/">Xiaojuan Qi</a><sup>1†</sup>,</span>
             </div>
   
             <div class="is-size-5 publication-authors">
-              <span class="author-block"><sup>1</sup>Tsinghua University,</span>
-              <span class="author-block"><sup>2</sup>Shanghai Qi Zhi Institute,</span> 
-              <span class="author-block"><sup>3</sup>Shanghai AI Laboratory,</span> 
-              <span class="author-block"><sup>4</sup>Galbot</span> 
+              <span class="author-block"><sup>1</sup>The University of Hong Kong,</span> 
+              <span class="author-block"><sup>2</sup>Tsinghua University,</span>
+              <span class="author-block"><sup>3</sup>Tencent,</span> 
+              <span class="author-block"><sup>4</sup>Beijing Normal University</span> 
             </div>
+
+            <div class="is-size-5 publication-authors">
+              <span class="author-block"><sup>*</sup>Equal Contribution, </span>
+              <span class="author-block"><sup>†</sup>Corresponding Author</span>
+          </div>
+
+
   
-            <div class="is-size-4 publication-authors">
+            <!-- <div class="is-size-4 publication-authors">
               <span style="font-weight:bold">CVPR 2025</span>
-            </div>
+            </div> -->
 
             <div class="column has-text-centered">
             <div class="publication-links">
@@ -135,15 +168,16 @@
               </span> -->
               
               <span class="link-block">
-                <a href="https://github.com/liyitang22/phys-reach-grasp"
+                <a href="https://github.com/mxllc/EmbRACE-3K"
                    class="external-link button is-normal is-rounded is-dark">
                   <span class="icon">
                       <i class="fab fa-github"></i>
                   </span>
-                  <span>Code</span>
+                  <span>Code(Coming Soon)</span>
                   </a>
               </span>
-              <span class="link-block">
+
+              <!-- <span class="link-block">
                 <a href="https://www.youtube.com/watch?v=eJ2G_tpUE8Y"
                    class="external-link button is-normal is-rounded is-dark">
                   <span class="icon">
@@ -151,7 +185,8 @@
                   </span>
                   <span>Video</span>
                 </a>
-              </span>
+              </span> -->
+
               <!-- <span class="link-block">
                 <a href="./static/videos/video-7.mp4"
                    class="external-link button is-normal is-rounded is-dark">
@@ -202,14 +237,14 @@
       </div>
     </div>
 
-    <div class="columns is-centered has-text-centered">
+    <!-- <div class="columns is-centered has-text-centered">
       <div class="column is-four-fifths">
         <h2 class="title is-3"><span style="color: rgb(0, 0, 0); font-weight:bold">Video</span></h2>
         <div class="publication-video">
           <iframe width="560" height="315" src="https://www.youtube.com/embed/eJ2G_tpUE8Y?si=Gp7NJoYmhQbc0HJ2" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
         </div>
     </div>
-  </div>
+  </div> -->
   </section>
 
   <section class="hero is-light is-small">
@@ -284,26 +319,20 @@
           <h2 class="title is-3"><span style="color: rgb(0, 0, 0); font-weight:bold">Abstract</span></h2>
           <div class="content has-text-justified">
             <p>
-              Existing motion generation methods based on mocap data are often limited by <span
-                style="color: #ff0000; font-weight:bold">data quality and coverage</span>. In this work, we propose a
-              framework that <span style="color: #d76196; font-weight:bold">generates diverse, physically feasible
-                full-body human reaching and grasping motions</span> using <span
-                style="color: rgb(210, 171, 73); font-weight:bold">only brief walking mocap data</span>. Base on the
-              observation that <span style="color: rgb(210, 171, 73); font-weight:bold">walking data captures valuable
-                movement patterns transferable across tasks</span> and, on the other hand, <span
-                style="color: rgb(96, 158, 240); font-weight:bold">the advanced kinematic methods can generate diverse
-                grasping poses</span>, which can then be interpolated into motions to <span
-                style="color: rgb(96, 158, 240); font-weight:bold">serve as task-specific guidance</span>. Our approach
-              incorporates an <span style="color: rgb(146, 53, 238); font-weight:bold">active data generation
-                strategy</span> to maximize the utility of the generated motions, along with a <span
-                style="color: rgb(146, 53, 238); font-weight:bold">local feature alignment mechanism</span> that
-              transfers natural movement patterns from walking data to enhance both the success rate and naturalness of
-              the synthesized motions. By combining the <span
-                style="color: rgb(210, 171, 73); font-weight:bold">fidelity and stability of natural walking</span> with
-              the <span style="color: rgb(96, 158, 240); font-weight:bold">flexibility and generalizability of
-                task-specific generated data</span>, our method demonstrates <span
-                style="color: rgb(5, 160, 93); font-weight:bold">strong performance and robust adaptability in diverse
-                scenes and with unseen objects</span>.
+              Recent advanced vision-language models (VLMs) have demonstrated strong performance on passive, offline image and video understanding tasks. 
+              However, their effectiveness in embodied settings-- which require online interaction and active scene understanding-- remains limited. 
+              In such scenarios, an agent perceives the environment from a first-person perspective, with each action dynamically shaping subsequent observations. 
+              Even state-of-the-art models such as GPT-4o, Claude 3.5 Sonnet, and Gemini 2.5 Pro struggle in open-environment interactions, exhibiting clear limitations in spatial reasoning and long-horizon planning. 
+              These limitations are further emphasized by our empirical analysis of modern VLMs, which reveals consistent failure modes when applied to embodied tasks. 
+              To address this gap, we introduce \embraceThreeK{}, a dataset of over \textbf{3,000} language-guided tasks situated in diverse, photorealistic environments constructed using Unreal Engine and the UnrealCV-Zoo framework. 
+              The tasks encompass a wide range of embodied challenges, including navigation, object manipulation, and multi-stage goal execution. 
+              Each task unfolds as a multi-step trajectory, pairing first-person visual observations with high-level instructions, grounded actions, and natural language rationales that express the agent's intent at every step. 
+              This design results in fine-grained, temporally grounded annotations that closely align perception with decision-making. 
+              In total, the dataset contains approximately \textbf{26,000} decision steps, each annotated with multimodal context and step-wise reasoning. 
+              Using \embraceThreeK{}, we establish a benchmark to evaluate the embodied reasoning capabilities of VLMs such as GPT-4o, Gemini 2.5 Pro, and Qwen2.5-VL-7B, across three key dimensions: Exploration, Dynamic Spatial-Semantic Reasoning, and Multi-stage Goal Execution. In zero-shot settings, all models achieve success rates below 20\%, underscoring the challenge posed by our benchmark and the current limitations of VLMs in interactive environments. 
+              To demonstrate the utility of \embraceThreeK{}, we further fine-tune Qwen2.5-VL-7B using supervised learning followed by reinforcement learning. 
+              This approach yields substantial improvements across all three challenge categories, highlighting the dataset's effectiveness in enabling the development of embodied reasoning capabilities. 
+              Our dataset, evaluation benchmark, and code will be made publicly available to support future research in this area.
 
             </p>
           </div>
@@ -1111,7 +1140,7 @@
       <!-- <h2 class="title">Contact</h2> -->
       <h2 class="title is-3">Contact</h2>
         <p>
-          Please contact us at <a href=liyitang22@mails.tsinghua.edu.cn">liyitang22@mails.tsinghua.edu.cn</a> if you have any question. 
+          Please contact us at <a href="mailto:lmx.mingxian@gmail.com">lmx.mingxian@gmail.com</a> if you have any question. 
         </p>
     </div>
   </section>
