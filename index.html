@@ -409,45 +409,72 @@
 
 
 
- <section class="section">
+<section class="section">
   <div class="container is-max-desktop">
+    <!-- 标题 -->
     <div class="columns is-centered has-text-centered">
-      <div class="column is-full">
+      <div class="column is-four-fifths">
         <h2 class="title is-3">
           <span style="color: rgb(0, 0, 0); font-weight:bold">Data Example</span>
         </h2>
       </div>
     </div>
 
-    <!-- Instruction -->
-    <div class="has-text-centered mb-5">
-      <p id="instruction-text"></p>
+   
+
+  <div class="field is-grouped is-grouped-centered mb-4" style="justify-content: center;">
+    <!-- Task type selector with inline label -->
+    <div class="control" style="display: flex; align-items: center; margin-right: 20px;">
+      <span style="font-weight: bold; margin-right: 6px;">Type:</span>
+      <div class="select">
+        <select id="task-type"></select>
+      </div>
     </div>
 
-    <!-- Content Row -->
-    <div class="columns is-vcentered">
-      <!-- Image -->
+    <!-- Task ID selector with inline label -->
+    <div class="control" style="display: flex; align-items: center;">
+      <span style="font-weight: bold; margin-right: 6px;">Task:</span>
+      <div class="select">
+        <select id="task-item"></select>
+      </div>
+    </div>
+  </div>
+
+
+    <!-- 指令 -->
+    <div class="has-text-centered mb-5">
+      <p id="instruction"></p>
+    </div>
+
+    <!-- 图像 + 信息 -->
+    <div class="columns is-centered is-vcentered">
+      <!-- 左图像 -->
       <div class="column is-half has-text-centered">
-        <figure class="image">
-          <img id="step-image" src="" alt="step" style="max-height: 500px; object-fit: contain;">
+        <figure class="image" style="height: 512px; overflow: hidden;">
+          <img id="step-image" src="" style="height: 100%; width: auto; object-fit: cover; border-radius: 8px;" />
         </figure>
       </div>
 
-      <!-- Text + Buttons -->
-      <div class="column is-half" style="display: flex; flex-direction: column; justify-content: space-between; height: 500px;">
-  <div class="content" style="font-size: 18px; overflow-y: auto; max-height: 420px; padding-right: 8px;">
-    <p id="step-index" style="font-weight: bold; font-size: 22px; color: #9C27B0;"></p>
-    <p id="step-thinking"></p>
-    <p id="step-action"></p>
-  </div>
+      <!-- 右内容框 -->
+      <div class="column is-half">
+        <div style="border: 1px solid #ccc; border-radius: 12px; padding: 20px; height: 512px; overflow-y: auto;">
+          <div id="step-id" class="mb-3"></div>
+          <div id="thinking-box" class="mb-3"></div>
+          <div id="action-box" class="mb-3"></div>
+        </div>
+      </div>
+    </div>
 
-  <!-- 按钮居中对称 -->
-  <div class="buttons is-centered mt-3" style="gap: 12px;">
-    <button id="prev-btn" class="button is-link is-light">← Last Step</button>
-    <button id="next-btn" class="button is-link is-light">Next Step →</button>
+    <!-- 下方按钮 -->
+    <div class="buttons is-centered mt-4" style="justify-content: center;">
+      <button id="prev-step" class="button is-light" style="height: 40px;">← Last Step</button>
+      <button id="next-step" class="button is-link" style="height: 40px;">Next Step →</button>
+    </div>
   </div>
-</div>
 </section>
+
+
+
 
 
 
@@ -630,94 +657,10 @@
 </script>
 
 
-<script>
-  const basePath = "./static/data/t0/x01100_y-00798_z0117_i2/";
-  const geminiPath = basePath + "gemini.json";
-  const infoPath = basePath + "infos.json";
-
-  let currentIndex = 0;
-  let steps = [];
-
-  const imgEl = document.getElementById("step-image");
-  const indexEl = document.getElementById("step-index");
-  const actionEl = document.getElementById("step-action");
-  const thinkingEl = document.getElementById("step-thinking");
-  const instructionEl = document.getElementById("instruction-text");
-  const prevBtn = document.getElementById("prev-btn");
-  const nextBtn = document.getElementById("next-btn");
-
-  const ACTION_COLORS = {
-    "MoveForward": "#388E3C",
-    "MoveBackward": "#388E3C",
-    "JumpForward": "#388E3C",
-    "TurnLeft": "#7C4DFF",
-    "TurnRight": "#7C4DFF",
-    "LookUp": "#EA80FC",
-    "LookDown": "#EA80FC",
-    "LookBack": "#EA80FC",
-    "LookHand": "#EA80FC",
-    "OpenDoor": "#E64A19",
-    "PickObject": "#E64A19",
-    "DropObject": "#E64A19",
-    "Finish": "#FBC02D",
-    "MidwayTarget": "#29B6F6"
-  };
-
-  function formatInstruction(task) {
-    return (
-      `<span style="font-size:26px; font-weight:bold; color:#444;">Instruction:</span> ` +
-      `<span style="font-size:26px; font-weight:bold; color:#FF5722;">${task}</span>`
-    );
-  }
-
-  function formatAction(action) {
-    const color = ACTION_COLORS[action] || "#90A4AE";
-    return `<b><span style='color:#40C4FF;'>Action:</span></b> <span style='font-size:20px; color:${color};'>${action}</span>`;
-  }
-
-  function formatThinking(thinking) {
-    return `<b><span style='font-weight:bold; color:#FFB300;'>Thinking:</span></b> <span style='font-size:20px; color:#444;'>${thinking}</span>`;
-  }
-
-  function updateStep(index) {
-    const step = steps[index];
-    imgEl.src = basePath + step.image_name;
-    indexEl.innerHTML = `<span style="font-size:22px;">Step: ${index}</span>`;
-    thinkingEl.innerHTML = formatThinking(step.thinking);
-    actionEl.innerHTML = formatAction(step.action);
-
-    prevBtn.disabled = index === 0;
-    nextBtn.disabled = index === steps.length - 1;
-  }
-
-  prevBtn.addEventListener("click", () => {
-    if (currentIndex > 0) {
-      currentIndex -= 1;
-      updateStep(currentIndex);
-    }
-  });
-
-  nextBtn.addEventListener("click", () => {
-    if (currentIndex < steps.length - 1) {
-      currentIndex += 1;
-      updateStep(currentIndex);
-    }
-  });
-
-  // 加载数据
-  Promise.all([
-    fetch(geminiPath).then(res => res.json()),
-    fetch(infoPath).then(res => res.json())
-  ]).then(([stepData, infoData]) => {
-    steps = stepData;
-    instructionEl.innerHTML = formatInstruction(infoData.Instruction);
-    updateStep(currentIndex);
-  }).catch(err => {
-    console.error("❌ Failed to load data:", err);
-  });
-</script>
 
 
+
+<script src="static/js/data_viewer.js" defer></script>
 
 
 

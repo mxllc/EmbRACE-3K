@@ -1,5 +1,5 @@
 {
-    "Instruction": "Approach the porch of the house.",
+    "Instruction": "Approach the porch of the house.Approach the porch of the house.Approach the porch of the house.Approach the porch of the house.Approach the porch of the house.Approach the porch of the house.",
     "Reason": "Basic navigation task directing the agent towards a significant architectural feature of the main visible house.",
     "Type": 0,
     "GenAI_Target_Object": [

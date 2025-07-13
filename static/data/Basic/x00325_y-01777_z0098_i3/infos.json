@@ -1,0 +1,111 @@
+{
+    "Instruction": "Proceed towards the containers visible in the distance.",
+    "Reason": "Simple navigation towards a distant but visible object cluster, requiring sustained forward movement.",
+    "Type": 0,
+    "GenAI_Target_Object": [
+        "SM_Container12m588"
+    ],
+    "Start_Pose": [
+        325.316,
+        -1777.184,
+        98.275,
+        0.0,
+        -52.878,
+        0.0
+    ],
+    "Action": [
+        "MoveForward",
+        "TurnLeft",
+        "MoveForward",
+        "MoveForward",
+        "MoveForward",
+        "MoveForward",
+        "MoveForward",
+        "MoveForward",
+        "Finish"
+    ],
+    "Target_Pose": [
+        [
+            667.956,
+            -3432.242,
+            98.275,
+            0.0,
+            -82.451,
+            0.0
+        ]
+    ],
+    "Trajectory_Pose": [
+        [
+            325.316,
+            -1777.184,
+            98.275,
+            0.0,
+            -52.878,
+            0.0
+        ],
+        [
+            474.777,
+            -1974.643,
+            98.275,
+            0.0,
+            -52.878,
+            0.0
+        ],
+        [
+            474.777,
+            -1974.643,
+            98.275,
+            0.0,
+            -82.451,
+            0.0
+        ],
+        [
+            506.216,
+            -2211.881,
+            98.275,
+            0.0,
+            -82.451,
+            0.0
+        ],
+        [
+            538.842,
+            -2458.058,
+            98.275,
+            0.0,
+            -82.451,
+            0.0
+        ],
+        [
+            571.381,
+            -2703.569,
+            98.275,
+            0.0,
+            -82.451,
+            0.0
+        ],
+        [
+            603.235,
+            -2943.917,
+            98.275,
+            0.0,
+            -82.451,
+            0.0
+        ],
+        [
+            635.665,
+            -3188.605,
+            98.275,
+            0.0,
+            -82.451,
+            0.0
+        ],
+        [
+            667.956,
+            -3432.242,
+            98.275,
+            0.0,
+            -82.451,
+            0.0
+        ]
+    ]
+}
