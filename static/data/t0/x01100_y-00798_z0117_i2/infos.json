@@ -1,0 +1,93 @@
+{
+    "Instruction": "Approach the porch of the house.",
+    "Reason": "Basic navigation task directing the agent towards a significant architectural feature of the main visible house.",
+    "Type": 0,
+    "GenAI_Target_Object": [
+        "BP_Porch69"
+    ],
+    "Start_Pose": [
+        1099.954,
+        -798.499,
+        116.951,
+        0.0,
+        -111.883,
+        0.0
+    ],
+    "Action": [
+        "MoveForward",
+        "TurnLeft",
+        "MoveForward",
+        "MoveForward",
+        "MoveForward",
+        "MoveForward",
+        "Finish"
+    ],
+    "Target_Pose": [
+        [
+            335.029,
+            -1475.852,
+            165.036,
+            0.0,
+            -140.783,
+            0.0
+        ]
+    ],
+    "Trajectory_Pose": [
+        [
+            1099.954,
+            -798.499,
+            116.951,
+            0.0,
+            -111.883,
+            0.0
+        ],
+        [
+            1011.89,
+            -1017.762,
+            131.437,
+            0.0,
+            -111.883,
+            0.0
+        ],
+        [
+            1011.89,
+            -1017.762,
+            131.437,
+            0.0,
+            -140.783,
+            0.0
+        ],
+        [
+            840.743,
+            -1139.095,
+            139.453,
+            0.0,
+            -140.783,
+            0.0
+        ],
+        [
+            657.023,
+            -1289.017,
+            148.08,
+            0.0,
+            -140.783,
+            0.0
+        ],
+        [
+            471.819,
+            -1407.175,
+            175.472,
+            0.0,
+            -140.783,
+            0.0
+        ],
+        [
+            335.029,
+            -1475.852,
+            165.036,
+            0.0,
+            -140.783,
+            0.0
+        ]
+    ]
+}
