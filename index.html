@@ -298,31 +298,20 @@
 
   <section class="section">
     <div class="container is-max-desktop">
-      <!-- Abstract. -->
       <div class="columns is-centered has-text-centered">
         <div class="column is-four-fifths">
-          <h2 class="title is-3"><span style="color: rgb(0, 0, 0); font-weight:bold">Abstract</span></h2>
+          <h2 class="title is-3" style="color: rgb(0, 0, 0); font-weight:bold;">Abstract</h2>
           <div class="content has-text-justified">
             <p style="font-size: 18px;">
-              Recent advanced vision-language models (VLMs) have demonstrated strong performance on passive, offline image and video understanding tasks. 
-              However, their effectiveness in embodied settings—which require online interaction and active scene understanding—remains limited. 
-              In such scenarios, an agent perceives the environment from a first-person perspective, with each action dynamically shaping subsequent observations. 
-              Even state-of-the-art models such as GPT-4o, Claude 3.5 Sonnet, and Gemini 2.5 Pro struggle in open-environment interactions, exhibiting clear limitations in spatial reasoning and long-horizon planning. 
-              These limitations are further emphasized by our empirical analysis of modern VLMs, which reveals consistent failure modes when applied to embodied tasks. 
-              To address this gap, we introduce 
+              Recent vision-language models (VLMs) show strong results on offline image and video understanding, but their performance in interactive, embodied environments remains limited. In close loop settings, an agent acts from a first-person view, where each decision alters future observations. Even leading models like GPT-4o, Claude 3.5 Sonnet, and Gemini 2.5 Pro struggle with spatial reasoning and long-horizon planning.
+              We present 
               <span class="embrace-title">
-                <span class="em">Em</span><span class="r">R</span><span class="a">A</span><span class="c">C</span><span class="e">E</span><span class="dash">-</span>3K,
-              a dataset of over <b>3,000</b> language-guided tasks situated in diverse, photorealistic environments constructed using Unreal Engine and the UnrealCV-Zoo framework. 
-              The tasks encompass a wide range of embodied challenges, including navigation, object manipulation, and multi-stage goal execution. 
-              Each task unfolds as a multi-step trajectory, pairing first-person visual observations with high-level instructions, grounded actions, and natural language rationales that express the agent's intent at every step. 
-              This design results in fine-grained, temporally grounded annotations that closely align perception with decision-making. 
-              In total, the dataset contains approximately <b>26,000</b> decision steps, each annotated with multimodal context and step-wise reasoning. 
-              Using <span class="embrace-title">
-                <span class="em">Em</span><span class="r">R</span><span class="a">A</span><span class="c">C</span><span class="e">E</span><span class="dash">-</span>3K, we establish a benchmark to evaluate the embodied reasoning capabilities of VLMs such as GPT-4o, Gemini 2.5 Pro, and Qwen2.5-VL-7B, across three key dimensions: Exploration, Dynamic Spatial-Semantic Reasoning, and Multi-stage Goal Execution. In zero-shot settings, all models achieve success rates below 20%, underscoring the challenge posed by our benchmark and the current limitations of VLMs in interactive environments. 
-              To demonstrate the utility of <span class="embrace-title">
-                <span class="em">Em</span><span class="r">R</span><span class="a">A</span><span class="c">C</span><span class="e">E</span><span class="dash">-</span>3K, we further fine-tune Qwen2.5-VL-7B using supervised learning followed by reinforcement learning. 
-              This approach yields substantial improvements across all three challenge categories, highlighting the dataset's effectiveness in enabling the development of embodied reasoning capabilities. 
-              Our dataset, evaluation benchmark, and code will be made publicly available to support future research in this area.
+                <span class="em">Emb</span><span class="r">R</span><span class="a">A</span><span class="c">C</span><span class="e">E</span><span class="dash">-</span>3K
+              </span>, a dataset of over <strong>3,000</strong> language-guided tasks in diverse Unreal Engine environments. Each task spans multiple steps, with egocentric views, high-level instructions, grounded actions, and natural language rationales.
+              We benchmark VLMs on three core skills: exploration, dynamic spatial-semantic reasoning, and multi-stage goal execution. In zero-shot tests, all models achieve below 20 percent success, showing clear room for improvement. Fine-tuning Qwen2.5-VL-7B with supervised and reinforcement learning leads to consistent gains across all task types, demonstrating the value of 
+              <span class="embrace-title">
+                <span class="em">Emb</span><span class="r">R</span><span class="a">A</span><span class="c">C</span><span class="e">E</span><span class="dash">-</span>3K
+              </span> for developing embodied intelligence.
             </p>
           </div>
         </div>
@@ -331,19 +320,23 @@
   </section>
 
 
+
+
   <section class="section">
     <div class="container is-max-desktop">
       <!-- Section Title -->
       <div class="columns is-centered has-text-centered">
-        <div class="column is-four-fifths">
+        <div class="column is-full">
           <h2 class="title is-3"><span style="color: rgb(0, 0, 0); font-weight:bold">Data Collection</span></h2>
-          <div class="content has-text-justified">
+
+          <div class="content has-text-left mb-5">
             <p style="font-size: 18px;">
               The <span class="embrace-title">
-                <span class="em">Em</span><span class="r">R</span><span class="a">A</span><span class="c">C</span><span class="e">E</span><span class="dash">-</span>3K
+                <span class="em">Emb</span><span class="r">R</span><span class="a">A</span><span class="c">C</span><span class="e">E</span><span class="dash">-</span>3K
               </span> dataset is built in four stages: (1) sampling diverse 6-DoF agent poses with ego views in virtual environments, (2) generating grounded task instructions using Gemini, (3) collecting human demonstrations, and (4) annotating each action with step-wise natural language reasoning to explain agent decisions and enhance interpretability.
             </p>
           </div>
+
         </div>
       </div>
 
@@ -424,24 +417,22 @@
       </div>
 
     <!-- 数据说明 -->
-    <div class="content has-text-centered mb-5">
+    <div class="content has-text-left mb-5">
       <p style="font-size: 18px;">
         The 
         <span class="embrace-title">
-          <span class="em">Em</span><span class="r">R</span><span class="a">A</span><span class="c">C</span><span class="e">E</span><span class="dash">-</span>3K
+          <span class="em">Emb</span><span class="r">R</span><span class="a">A</span><span class="c">C</span><span class="e">E</span><span class="dash">-</span>3K
         </span>
         dataset provides <strong>6 types of embodied tasks</strong>,
         each represented as a <strong>trajectory</strong> of step-by-step interaction.
         These tasks are performed in a <strong>close-loop</strong> manner,
-        where the agent’s perception at each step determines its next action,
+        where the agent's perception at each step determines its next action,
         forming a tight feedback cycle between observation and decision-making.
-        <br />
         For every step, the dataset includes:
         <strong style="color: #FF5722;">instruction</strong>,
         <strong style="color: #009688;">egocentric view image</strong>,
         <strong style="color: #FFB300;">thinking</strong>, and
         <strong style="color: #40C4FF;">action</strong>.
-        <br />
         Below are a few demo examples.
       </p>
     </div>
@@ -513,13 +504,14 @@
       </div>
 
       <!-- Description -->
-      <div class="content has-text-centered mb-5">
+      <div class="content has-text-left mb-5">
         <p style="font-size: 18px;">
-          We compare several strong <strong>vision-language models (VLMs)</strong> on different types of tasks from the 
+          We show the <strong>qualitative performance</strong> of several strong <strong>vision-language models (VLMs)</strong> on a variety of tasks from the 
           <span class="embrace-title">
-            <span class="em">Em</span><span class="r">R</span><span class="a">A</span><span class="c">C</span><span class="e">E</span><span class="dash">-</span>3K
-          </span> dataset.
-          You can select a task type to preview how different baselines perform in the same environment.
+            <span class="em">Emb</span><span class="r">R</span><span class="a">A</span><span class="c">C</span><span class="e">E</span><span class="dash">-</span>3K
+          </span> dataset, including <strong>GPT-4o</strong>, <strong>Gemini 2.5 Pro</strong>, <strong>Qwen2.5-VL 7B (Original)</strong>, and <strong>Qwen2.5-VL 7B (SFT + RL)</strong>.
+          You can select a task type to preview how different baselines behave in the same environment.
+          The labels in the upper-right corner (e.g., <code>x10</code>) indicate the playback speed of each video, which has been accelerated for more efficient viewing.
         </p>
       </div>
 
