@@ -19,20 +19,20 @@
   },
   "Dynamic_Spatial-Semantic": {
     "gemini": {
-      "file": "gemini_10.mp4",
-      "speed": 10
+      "file": "gemini_6.mp4",
+      "speed": 6
     },
     "gpt": {
-      "file": "gpt_100.mp4",
-      "speed": 100
+      "file": "gpt_10.mp4",
+      "speed": 10
     },
     "qwen": {
       "file": "qwen_5.mp4",
       "speed": 5
     },
     "qwen_ft": {
-      "file": "qwen_ft_19.mp4",
-      "speed": 19
+      "file": "qwen_ft_1.mp4",
+      "speed": 1
     }
   },
   "Exploration": {
