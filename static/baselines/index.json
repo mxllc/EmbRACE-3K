@@ -55,19 +55,19 @@
   },
   "Interaction_Open-Door": {
     "gemini": {
-      "file": "gemini.mp4",
+      "file": "gemini_1.mp4",
       "speed": 1
     },
     "gpt": {
-      "file": "gpt.mp4",
+      "file": "gpt_1.mp4",
       "speed": 1
     },
     "qwen": {
-      "file": "qwen.mp4",
+      "file": "qwen_1.mp4",
       "speed": 1
     },
     "qwen_ft": {
-      "file": "qwen_ft.mp4",
+      "file": "qwen_ft_1.mp4",
       "speed": 1
     }
   },
