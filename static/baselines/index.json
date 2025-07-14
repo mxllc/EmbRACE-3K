@@ -1,8 +1,8 @@
 {
   "Basic": {
     "gemini": {
-      "file": "gemini_10.mp4",
-      "speed": 10
+      "file": "gemini_3.mp4",
+      "speed": 3
     },
     "gpt": {
       "file": "gpt_10.mp4",
