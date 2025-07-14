@@ -19,8 +19,8 @@
   },
   "Dynamic_Spatial-Semantic": {
     "gemini": {
-      "file": "gemini_6.mp4",
-      "speed": 6
+      "file": "gemini_5.mp4",
+      "speed": 5
     },
     "gpt": {
       "file": "gpt_10.mp4",
@@ -73,19 +73,19 @@
   },
   "Interaction_Pick-and-Drop": {
     "gemini": {
-      "file": "gemini.mp4",
-      "speed": 1
+      "file": "gemini_5.mp4",
+      "speed": 5
     },
     "gpt": {
-      "file": "gpt.mp4",
-      "speed": 1
+      "file": "gpt_10.mp4",
+      "speed": 10
     },
     "qwen": {
-      "file": "qwen.mp4",
-      "speed": 1
+      "file": "qwen_5.mp4",
+      "speed": 5
     },
     "qwen_ft": {
-      "file": "qwen_ft.mp4",
+      "file": "qwen_ft_1.mp4",
       "speed": 1
     }
   },
