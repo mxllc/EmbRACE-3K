@@ -302,7 +302,7 @@
         <div class="column is-four-fifths">
           <h2 class="title is-3"><span style="color: rgb(0, 0, 0); font-weight:bold">Abstract</span></h2>
           <div class="content has-text-justified">
-            <p>
+            <p style="font-size: 18px;">
               Recent advanced vision-language models (VLMs) have demonstrated strong performance on passive, offline image and video understanding tasks. 
               However, their effectiveness in embodied settings—which require online interaction and active scene understanding—remains limited. 
               In such scenarios, an agent perceives the environment from a first-person perspective, with each action dynamically shaping subsequent observations. 
@@ -337,7 +337,7 @@
         <div class="column is-four-fifths">
           <h2 class="title is-3"><span style="color: rgb(0, 0, 0); font-weight:bold">Data Collection</span></h2>
           <div class="content has-text-justified">
-            <p>
+            <p style="font-size: 18px;">
               The <span class="embrace-title">
                 <span class="em">Em</span><span class="r">R</span><span class="a">A</span><span class="c">C</span><span class="e">E</span><span class="dash">-</span>3K
               </span> dataset is built in four stages: (1) sampling diverse 6-DoF agent poses with ego views in virtual environments, (2) generating grounded task instructions using Gemini, (3) collecting human demonstrations, and (4) annotating each action with step-wise natural language reasoning to explain agent decisions and enhance interpretability.
@@ -354,7 +354,9 @@
           </figure>
         </div>
       </div>
+    </div>
   </section>
+
 
 
 
@@ -409,69 +411,91 @@
 
 
 
-<section class="section">
-  <div class="container is-max-desktop">
-    <!-- 标题 -->
-    <div class="columns is-centered has-text-centered">
-      <div class="column is-four-fifths">
-        <h2 class="title is-3">
-          <span style="color: rgb(0, 0, 0); font-weight:bold">Data Example</span>
-        </h2>
-      </div>
-    </div>
-
-   
-
-  <div class="field is-grouped is-grouped-centered mb-4" style="justify-content: center;">
-    <!-- Task type selector with inline label -->
-    <div class="control" style="display: flex; align-items: center; margin-right: 20px;">
-      <span style="font-weight: bold; margin-right: 6px;">Type:</span>
-      <div class="select">
-        <select id="task-type"></select>
-      </div>
-    </div>
-
-    <!-- Task ID selector with inline label -->
-    <div class="control" style="display: flex; align-items: center;">
-      <span style="font-weight: bold; margin-right: 6px;">Task:</span>
-      <div class="select">
-        <select id="task-item"></select>
-      </div>
-    </div>
-  </div>
-
-
-    <!-- 指令 -->
-    <div class="has-text-centered mb-5">
-      <p id="instruction"></p>
-    </div>
-
-    <!-- 图像 + 信息 -->
-    <div class="columns is-centered is-vcentered">
-      <!-- 左图像 -->
-      <div class="column is-half has-text-centered">
-        <figure class="image" style="height: 512px; overflow: hidden;">
-          <img id="step-image" src="" style="height: 100%; width: auto; object-fit: cover; border-radius: 8px;" />
-        </figure>
+  <section class="section">
+    <div class="container is-max-desktop">
+      <!-- 标题 -->
+      <div class="columns is-centered has-text-centered">
+        <div class="column is-four-fifths">
+          <h2 class="title is-3">
+            <span style="color: rgb(0, 0, 0); font-weight:bold">Data Example</span>
+          </h2>
+        </div>
       </div>
 
-      <!-- 右内容框 -->
-      <div class="column is-half">
-        <div style="border: 1px solid #ccc; border-radius: 12px; padding: 20px; height: 512px; overflow-y: auto;">
-          <div id="step-id" class="mb-3"></div>
-          <div id="thinking-box" class="mb-3"></div>
-          <div id="action-box" class="mb-3"></div>
+    <!-- 数据说明 -->
+    <div class="content has-text-centered mb-5">
+      <p style="font-size: 18px;">
+        The 
+        <span class="embrace-title">
+          <span class="em">Em</span><span class="r">R</span><span class="a">A</span><span class="c">C</span><span class="e">E</span><span class="dash">-</span>3K
+        </span>
+        dataset provides <strong>6 types of embodied tasks</strong>,
+        each represented as a <strong>trajectory</strong> of step-by-step interaction.
+        These tasks are performed in a <strong>close-loop</strong> manner,
+        where the agent’s perception at each step determines its next action,
+        forming a tight feedback cycle between observation and decision-making.
+        <br />
+        For every step, the dataset includes:
+        <strong style="color: #FF5722;">instruction</strong>,
+        <strong style="color: #009688;">egocentric view image</strong>,
+        <strong style="color: #FFB300;">thinking</strong>, and
+        <strong style="color: #40C4FF;">action</strong>.
+        <br />
+        Below are a few demo examples.
+      </p>
+    </div>
+
+
+    <div class="field is-grouped is-grouped-centered mb-4" style="justify-content: center;">
+      <!-- Task type selector with inline label -->
+      <div class="control" style="display: flex; align-items: center; margin-right: 20px;">
+        <span style="font-weight: bold; margin-right: 6px;">Type:</span>
+        <div class="select">
+          <select id="task-type"></select>
+        </div>
+      </div>
+
+      <!-- Task ID selector with inline label -->
+      <div class="control" style="display: flex; align-items: center;">
+        <span style="font-weight: bold; margin-right: 6px;">Task:</span>
+        <div class="select">
+          <select id="task-item"></select>
         </div>
       </div>
     </div>
 
-    <!-- 下方按钮 -->
-    <div class="buttons is-centered mt-4" style="justify-content: center;">
-      <button id="prev-step" class="button is-light" style="height: 40px;">← Last Step</button>
-      <button id="next-step" class="button is-link" style="height: 40px;">Next Step →</button>
+
+      <!-- 指令 -->
+      <div class="has-text-centered mb-5">
+        <p id="instruction"></p>
+      </div>
+
+      <!-- 图像 + 信息 -->
+      <div class="columns is-centered is-vcentered">
+        <!-- 左图像 -->
+        <div class="column is-half has-text-centered">
+          <figure class="image" style="height: 512px; overflow: hidden;">
+            <img id="step-image" src="" style="height: 100%; width: auto; object-fit: cover; border-radius: 8px;" />
+          </figure>
+        </div>
+
+        <!-- 右内容框 -->
+        <div class="column is-half">
+          <div style="border: 1px solid #ccc; border-radius: 12px; padding: 20px; height: 512px; overflow-y: auto;">
+            <div id="step-id" class="mb-3"></div>
+            <div id="thinking-box" class="mb-3"></div>
+            <div id="action-box" class="mb-3"></div>
+          </div>
+        </div>
+      </div>
+
+      <!-- 下方按钮 -->
+      <div class="buttons is-centered mt-4" style="justify-content: center;">
+        <button id="prev-step" class="button is-light" style="height: 40px;">← Last Step</button>
+        <button id="next-step" class="button is-link" style="height: 40px;">Next Step →</button>
+      </div>
     </div>
-  </div>
-</section>
+  </section>
 
 
 
