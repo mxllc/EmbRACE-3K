@@ -95,7 +95,7 @@
               <span class="author-block">
                 <a href="https://fangweizhong.xyz/">Fangwei Zhong</a><sup>4</sup>,</span>
               <span class="author-block">
-                <a href="http://thesouthfrog.com/about.me/">Shengju Qian</a><sup>3</sup>,</span>
+                <a href="http://thesouthfrog.com/about.me/">Shengju Qian</a><sup>3‡</sup>,</span>
               <span class="author-block">
                 <a href="https://scholar.google.com/citations?user=2Z1GJ50AAAAJ">Xin Wang</a><sup>3</sup>,</span>
               <span class="author-block">
@@ -105,14 +105,15 @@
             <div class="is-size-5 publication-authors">
               <span class="author-block"><sup>1</sup>The University of Hong Kong,</span> 
               <span class="author-block"><sup>2</sup>Tsinghua University,</span>
-              <span class="author-block"><sup>3</sup>Tencent,</span> 
+              <span class="author-block"><sup>3</sup>LIGHTSPEED,</span> 
               <span class="author-block"><sup>4</sup>Beijing Normal University</span> 
             </div>
 
             <div class="is-size-5 publication-authors">
               <span class="author-block"><sup>*</sup>Equal Contribution, </span>
+              <span class="author-block"><sup>‡</sup>Project Lead, </span>
               <span class="author-block"><sup>†</sup>Corresponding Author</span>
-          </div>
+            </div>
 
 
   
@@ -501,76 +502,124 @@
 
 
 
-<section class="section">
-  <div class="container is-max-desktop">
-    <!-- 标题 -->
-    <div class="columns is-centered has-text-centered">
-      <div class="column is-four-fifths">
-        <h2 class="title is-3" style="color: black; font-weight: bold;">Baseline Comparison</h2>
-      </div>
-    </div>
+  <section class="section">
+    <div class="container is-max-desktop">
 
-    <!-- 数据说明 -->
-    <div class="content has-text-centered mb-5">
-      <p style="font-size: 18px;">
-        We compare several strong <strong>vision-language models (VLMs)</strong> on different types of tasks from the 
-        <span class="embrace-title">
-          <span class="em">Em</span><span class="r">R</span><span class="a">A</span><span class="c">C</span><span class="e">E</span><span class="dash">-</span>3K
-        </span> dataset.
-        You can select a task type to preview how different baselines perform in the same environment.
-      </p>
-    </div>
-
-    <!-- 类型选择 -->
-    <div class="field is-grouped is-grouped-centered mb-5" style="justify-content: center;">
-      <div class="control" style="display: flex; align-items: center;">
-        <span style="font-weight: bold; margin-right: 6px;">Type:</span>
-        <div class="select">
-          <select id="baseline-type" onchange="updateBaselineVideos()">
-            <option value="Basic">Basic</option>
-            <option value="Exploration">Exploration</option>
-            <option value="Dynami_Spatial-Semantic">Dynamic Spatial-Semantic</option>
-            <option value="Multi-stage">Multi-stage</option>
-            <option value="Interaction_Open-Door">Interaction Open-Door</option>
-            <option value="Interaction_Pick-and-Drop">Interaction Pick-and-Drop</option>
-          </select>
+      <!-- Section Title -->
+      <div class="columns is-centered has-text-centered">
+        <div class="column is-four-fifths">
+          <h2 class="title is-3" style="color: black; font-weight: bold;">Baseline Comparison</h2>
         </div>
       </div>
+
+      <!-- Description -->
+      <div class="content has-text-centered mb-5">
+        <p style="font-size: 18px;">
+          We compare several strong <strong>vision-language models (VLMs)</strong> on different types of tasks from the 
+          <span class="embrace-title">
+            <span class="em">Em</span><span class="r">R</span><span class="a">A</span><span class="c">C</span><span class="e">E</span><span class="dash">-</span>3K
+          </span> dataset.
+          You can select a task type to preview how different baselines perform in the same environment.
+        </p>
+      </div>
+
+      <!-- Dropdown Selector -->
+      <div class="field is-grouped is-grouped-centered mb-5" style="justify-content: center;">
+        <div class="control" style="display: flex; align-items: center;">
+          <span style="font-weight: bold; margin-right: 6px;">Type:</span>
+          <div class="select">
+            <select id="baseline-type" onchange="updateBaselineVideos()">
+              <option value="Basic">Basic</option>
+              <option value="Exploration">Exploration</option>
+              <option value="Dynamic_Spatial-Semantic">Dynamic Spatial-Semantic</option>
+              <option value="Multi-stage">Multi-stage</option>
+              <option value="Interaction_Open-Door">Interaction Open-Door</option>
+              <option value="Interaction_Pick-and-Drop">Interaction Pick-and-Drop</option>
+            </select>
+          </div>
+        </div>
+      </div>
+
+      <!-- Video Grid -->
+      <div id="baseline-video-container" class="columns is-multiline is-centered">
+
+        <!-- GPT-4o -->
+        <div class="column is-half has-text-centered">
+          <div style="margin-bottom: 10px;">
+            <div style="display: flex; justify-content: center; align-items: center; position: relative;">
+              <h3 class="title is-5" style="margin: 0 auto;">GPT-4o</h3>
+              <span id="gpt-label"
+                    style="position: absolute; right: 0; background: #FF5722; color: white; font-weight: bold;
+                          font-size: 16px; padding: 2px 8px; border-radius: 6px;
+                          box-shadow: 0 2px 4px rgba(0,0,0,0.2);">
+                x?
+              </span>
+            </div>
+          </div>
+          <video id="gpt-video" controls style="width: 100%; border-radius: 12px;">
+            <source src="" type="video/mp4">
+          </video>
+        </div>
+
+        <!-- Gemini -->
+        <div class="column is-half has-text-centered">
+          <div style="margin-bottom: 10px;">
+            <div style="display: flex; justify-content: center; align-items: center; position: relative;">
+              <h3 class="title is-5" style="margin: 0 auto;">Gemini 2.5 Pro</h3>
+              <span id="gemini-label"
+                    style="position: absolute; right: 0; background: #FF5722; color: white; font-weight: bold;
+                          font-size: 16px; padding: 2px 8px; border-radius: 6px;
+                          box-shadow: 0 2px 4px rgba(0,0,0,0.2);">
+                x?
+              </span>
+            </div>
+          </div>
+          <video id="gemini-video" controls style="width: 100%; border-radius: 12px;">
+            <source src="" type="video/mp4">
+          </video>
+        </div>
+
+        <!-- Qwen Original -->
+        <div class="column is-half has-text-centered">
+          <div style="margin-bottom: 10px;">
+            <div style="display: flex; justify-content: center; align-items: center; position: relative;">
+              <h3 class="title is-5" style="margin: 0 auto;">Qwen2.5-VL 7B (Original)</h3>
+              <span id="qwen-label"
+                    style="position: absolute; right: 0; background: #FF5722; color: white; font-weight: bold;
+                          font-size: 16px; padding: 2px 8px; border-radius: 6px;
+                          box-shadow: 0 2px 4px rgba(0,0,0,0.2);">
+                x?
+              </span>
+            </div>
+          </div>
+          <video id="qwen-video" controls style="width: 100%; border-radius: 12px;">
+            <source src="" type="video/mp4">
+          </video>
+        </div>
+
+        <!-- Qwen SFT + RL -->
+        <div class="column is-half has-text-centered">
+          <div style="margin-bottom: 10px;">
+            <div style="display: flex; justify-content: center; align-items: center; position: relative;">
+              <h3 class="title is-5" style="margin: 0 auto;">Qwen2.5-VL 7B (SFT + RL)</h3>
+              <span id="qwen_ft-label"
+                    style="position: absolute; right: 0; background: #FF5722; color: white; font-weight: bold;
+                          font-size: 16px; padding: 2px 8px; border-radius: 6px;
+                          box-shadow: 0 2px 4px rgba(0,0,0,0.2);">
+                x?
+              </span>
+            </div>
+          </div>
+          <video id="qwenft-video" controls style="width: 100%; border-radius: 12px;">
+            <source src="" type="video/mp4">
+          </video>
+        </div>
+
+      </div>
     </div>
+  </section>
 
-    <!-- 视频区域 -->
-    <div id="baseline-video-container" class="columns is-multiline is-centered">
-      <!-- 每个模型一列 -->
-      <div class="column is-half has-text-centered">
-        <h3 class="title is-5">GPT-4o</h3>
-        <video id="gpt-video" controls style="width: 100%; border-radius: 12px;">
-          <source src="static/baselines/Basic/gpt.mp4" type="video/mp4">
-        </video>
-      </div>
 
-      <div class="column is-half has-text-centered">
-        <h3 class="title is-5">Gemini 2.5 Pro</h3>
-        <video id="gemini-video" controls style="width: 100%; border-radius: 12px;">
-          <source src="static/baselines/Basic/gemini.mp4" type="video/mp4">
-        </video>
-      </div>
-
-      <div class="column is-half has-text-centered">
-        <h3 class="title is-5">Qwen2.5-VL 7B (Original)</h3>
-        <video id="qwen-video" controls style="width: 100%; border-radius: 12px;">
-          <source src="static/baselines/Basic/qwen.mp4" type="video/mp4">
-        </video>
-      </div>
-
-      <div class="column is-half has-text-centered">
-        <h3 class="title is-5">Qwen2.5-VL 7B (SFT + RL)</h3>
-        <video id="qwenft-video" controls style="width: 100%; border-radius: 12px;">
-          <source src="static/baselines/Basic/qwen_ft.mp4" type="video/mp4">
-        </video>
-      </div>
-    </div>
-  </div>
-</section>
 
 
 
@@ -752,7 +801,12 @@
 
 
 
-
+<!-- 页面加载后自动触发更新 -->
+<script>
+  window.addEventListener("DOMContentLoaded", () => {
+    updateBaselineVideos();
+  });
+</script>
 
 <script src="static/js/data_viewer.js" defer></script>
 <script src="static/js/baseline_viewer.js" defer></script>
